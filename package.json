@@ -1,0 +1,19 @@
+{
+  "name": "bamazon",
+  "version": "1.0.0",
+  "description": "bamazon sql",
+  "main": "BAmazonCustomer.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mercerbe/BAmazon.git"
+  },
+  "author": "Ben Mercer",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mercerbe/BAmazon/issues"
+  },
+  "homepage": "https://github.com/mercerbe/BAmazon#readme"
+}
