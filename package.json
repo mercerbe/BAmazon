@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/mercerbe/BAmazon/issues"
   },
-  "homepage": "https://github.com/mercerbe/BAmazon#readme"
+  "homepage": "https://github.com/mercerbe/BAmazon#readme",
+  "dependencies": {
+    "inquirer": "^5.2.0",
+    "mysql": "^2.15.0"
+  }
 }

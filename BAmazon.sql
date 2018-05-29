@@ -15,10 +15,10 @@ select * from Products;
 
 INSERT INTO Products(ProductName,DepartmentName,Price,StockQuantity)
 VALUES
-    ("Uncharted 4","ENTERTAINMENT",50.00,100),
-    ("ComputerGame","ENTERTAINMENT",40.00,100),
-    ("Game2","ENTERTAINMENT",30.00,100),
-    ("Game3","ENTERTAINMENT",20.00,100),
+    ("ComputerGame","ENTERTAINMENT",50.00,100),
+    ("ComputerGame2","ENTERTAINMENT",40.00,100),
+    ("Game","ENTERTAINMENT",30.00,100),
+    ("Game2","ENTERTAINMENT",20.00,100),
     ("Food","GROCERY",30.00,100),
     ("Food2","GROCERY",10.00,100),
     ("Clothing1","CLOTHING",75.00,100),
