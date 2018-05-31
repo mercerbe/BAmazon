@@ -1,3 +1,5 @@
+DROP DATABASE IF EXISTS BAmazon;
+
 CREATE DATABASE BAmazon;
 
 USE BAmazon;
@@ -49,3 +51,5 @@ VALUES
     ('KIDS', 40000.00, 12000.00),
     ('CLOTHING', 35000.00, 15000.00),
     ('SPORTS & OUTDOORS', 12000.00, 12000.00);
+
+grant all privileges on *.* to 'root'@'localhost'

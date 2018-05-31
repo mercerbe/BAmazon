@@ -1,11 +1,11 @@
+require('dotenv').config();
 const mysql = require('mysql');
-const dotenv = require('dotenv').config();
 const inquirer = require('inquirer');
 const chalk = require('chalk');
 const {table} = require('table');
 const server = mysql.createConnection({
   host: "localhost",
-  port: 3306,
+  port: 8889,
   user: "root",
   password: process.env.PASSWORD,
   database: "BAmazon"
