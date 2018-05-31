@@ -9,7 +9,7 @@ A sample command line store integrating mySQL and Node.js where customers can pl
 * Run command for which mode you'd like to enter:
   - Customer: 'node BAmazonCustomer'
   - Manager: 'node BAmazonManager'
-  - Exec: 'node BAmazonExec'
+  - Exec: 'node bamazonSupervisor'
 
 ### Prerequisites
 
@@ -30,7 +30,7 @@ Let's walk through each mode:
 
 1. BAmazonCustomer
 2. BAmazonManager
-3. BAmazonExec
+3. bamazonSupervisor
 
 ## Running Demos
 

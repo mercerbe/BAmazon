@@ -8,12 +8,12 @@ CREATE TABLE Products(
     DepartmentName VARCHAR(50) NOT NULL,
     Price DECIMAL(10,2) NOT NULL,
     StockQuantity INT(10) NOT NULL,
-    primary key(ItemID)
+    PRIMARY KEY(ItemID)
 );
 
 select * from Products;
 
-INSERT INTO Products(ProductName,DepartmentName,Price,StockQuantity)
+INSERT INTO Products(ProductName,DepartmentName,Price,StockQuantity,ProductSales)
 VALUES
     ("ComputerPart1","ELECTRONICS",50.00,100),
     ("ComputerPart2","ELECTRONICS",40.00,100),
@@ -37,12 +37,13 @@ CREATE TABLE Departments(
     DepartmentName VARCHAR(50) NOT NULL,
     OverHeadCosts DECIMAL(10,2) NOT NULL,
     TotalSales DECIMAL(10,2) NOT NULL,
-    PRIMARY KEY(DepartmentID));
+    PRIMARY KEY(DepartmentID)
+);
 
-INSERT INTO Departments(DepartmentName, OverHeadCosts, TotalSales)
+INSERT INTO Departments(DepartmentName, OverheadCosts, TotalSales)
 VALUES
     ('ENTERTAINMENT', 50000.00, 15000.00),
-    ('ELECTRONICS', 20000.00, 12000.00),
+    ('ELECTRONICS', 20000.00, 10000.00),
     ('HOME', 30000.00, 15000.00),
     ('GROCERY', 1200.00, 15000.00),
     ('KIDS', 40000.00, 12000.00),
