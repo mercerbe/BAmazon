@@ -5,7 +5,7 @@ CREATE DATABASE BAmazon;
 USE BAmazon;
 
 CREATE TABLE Products(
-    ItemID MEDIUMINT AUTO_INCREMENT NOT NULL,
+    ItemID INT AUTO_INCREMENT NOT NULL,
     ProductName VARCHAR(100) NOT NULL,
     DepartmentName VARCHAR(50) NOT NULL,
     Price DECIMAL(10,2) NOT NULL,
@@ -15,7 +15,7 @@ CREATE TABLE Products(
 
 select * from Products;
 
-INSERT INTO Products(ProductName,DepartmentName,Price,StockQuantity,ProductSales)
+INSERT INTO Products(ProductName,DepartmentName,Price,StockQuantity)
 VALUES
     ("ComputerPart1","ELECTRONICS",50.00,100),
     ("ComputerPart2","ELECTRONICS",40.00,100),
@@ -35,7 +35,7 @@ VALUES
     ("Movie","ENTERTAINMENT",25.00,100);
 
 CREATE TABLE Departments(
-    DepartmentID MEDIUMINT AUTO_INCREMENT NOT NULL,
+    DepartmentID INT AUTO_INCREMENT NOT NULL,
     DepartmentName VARCHAR(50) NOT NULL,
     OverHeadCosts DECIMAL(10,2) NOT NULL,
     TotalSales DECIMAL(10,2) NOT NULL,
