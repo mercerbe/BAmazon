@@ -1,6 +1,6 @@
 CREATE DATABASE BAmazon;
 
-USE Bamazon;
+USE BAmazon;
 
 CREATE TABLE Products(
     ItemID MEDIUMINT AUTO_INCREMENT NOT NULL,
@@ -15,15 +15,20 @@ select * from Products;
 
 INSERT INTO Products(ProductName,DepartmentName,Price,StockQuantity)
 VALUES
-    ("ComputerGame","ENTERTAINMENT",50.00,100),
-    ("ComputerGame2","ENTERTAINMENT",40.00,100),
-    ("Game","ENTERTAINMENT",30.00,100),
+    ("ComputerPart1","ELECTRONICS",50.00,100),
+    ("ComputerPart2","ELECTRONICS",40.00,100),
+    ("Game1","ENTERTAINMENT",30.00,100),
     ("Game2","ENTERTAINMENT",20.00,100),
+    ("Home1","HOME",45.00,20),
+    ("Home2","HOME",30.00,25),
+    ("Toy1","KIDS",25.00,50),
+    ("Toy2","KIDS",30.00,100),
     ("Food","GROCERY",30.00,100),
     ("Food2","GROCERY",10.00,100),
     ("Clothing1","CLOTHING",75.00,100),
     ("Clothing2","CLOTHING",50.00,100),
-    ("Fishing Rod","SPORTS & OUTDOORS",20.00,100),
+    ("Sports1","SPORTS & OUTDOORS",20.00,100),
+    ("Sports2","SPORTS & OUTDOORS",20.00,100),
     ("Movie","ENTERTAINMENT",15.00,100),
     ("Movie","ENTERTAINMENT",25.00,100);
 
@@ -39,7 +44,6 @@ VALUES
     ('ENTERTAINMENT', 50000.00, 15000.00),
     ('ELECTRONICS', 20000.00, 12000.00),
     ('HOME', 30000.00, 15000.00),
-    ('BODY & HEALTH', 3000.00, 12000.00),
     ('GROCERY', 1200.00, 15000.00),
     ('KIDS', 40000.00, 12000.00),
     ('CLOTHING', 35000.00, 15000.00),

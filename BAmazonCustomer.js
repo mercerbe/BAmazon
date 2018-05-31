@@ -1,6 +1,8 @@
-const sql = require('mysql');
+const mysql = require('mysql');
 const dotenv = require('dotenv').config();
-const inquirer = require('inqirer');
+const inquirer = require('inquirer');
+const chalk = require('chalk');
+const table = require('table');
 const server = mysql.createConnection({
   host: "localhost",
   port: 3306,
@@ -52,23 +54,23 @@ function openStore(){
       let purchaseTotal = parseFloat(((results[purchasedItem].Price)*purchaseQuantity).toFixed(2));
       //check inventory
       if(results[purchasedItem].StockQuantity >= purchaseQuantity){
-        connection.query("UPDATE Products SET ? WHERE ?", [
+        server.query("UPDATE Products SET ? WHERE ?", [
           {StockQuantity: (results[purchasedItem].StockQuantity - purchaseQuantity)},
           {itemID: answer.id}
         ], function(err, result){
           if(err) throw err;
           console.log("Purchase Complete. Your total is $" + purchaseTotal + ".");
         });
-        connection.query("SELECT * FROM Departments", function(err, deptResults){
+        server.query("SELECT * FROM Departments", function(err, deptResults){
           if(err) throw err;
           var index;
-          for(let i=0; 1 < deptResults.length, i++){
+          for(let i=0; 1 < deptResults.length; i++){
             if(deptResults[i].DepartmentName == results[purchasedItem].DepartmentName){
               index = i;
             }
           }
         //update sales
-        connection.query("UPDATE Departments SET ? WHERE ?", [
+        server.query("UPDATE Departments SET ? WHERE ?", [
           {TotalSales: deptResults[index].TotalSales + purchaseTotal},
           {DepartmentName: results[purchasedItem].DepartmentName}
         ], function(err, deptResults){
@@ -92,7 +94,7 @@ function reprompt(){
       message: 'Whould you like to buy another item?'
     }
   ]).then(function(answer){
-    if(answer.reply){
+    if(answer.restart){
       openStore();
     }else{
       console.log("Thanks for shopping with us! Come back soon!");
