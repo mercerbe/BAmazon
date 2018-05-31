@@ -139,7 +139,7 @@ function addProduct() {
       name: 'price',
       message: 'Price of new product: ',
       validate: function(input){
-        if(isNAN(input) === false){return true;}else{return false;}
+        if(isNaN(input) === false){return true;}else{return false;}
       }
     },
     {
@@ -147,7 +147,7 @@ function addProduct() {
       name: 'quantity',
       message: 'Quantity of the product that will be stocked: ',
       validate: function(input){
-        if(isNAN(input) === false){return true;}else{return false;}
+        if(isNaN(input) === false){return true;}else{return false;}
       }
     }
   ]).then(function(answer){

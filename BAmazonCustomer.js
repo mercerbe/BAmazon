@@ -19,7 +19,7 @@ function openStore(){
     console.log("================================");
 
     for(let i = 0; i<results.length; i++){
-      console.log("Id: " + results[i].itemID + "|" + "Product: " + results[i].ProductName + "|" + "Department: " + results[i].DeparmentName + "|");
+      console.log("Id: " + results[i].ItemID + "|" + "Product: " + results[i].ProductName + "|" + "Department: " + results[i].DepartmentName + "|");
       console.log("===============================");
     }
     console.log(' ');
@@ -29,7 +29,7 @@ function openStore(){
       name: 'itemID',
       message: 'What is the Id of the item you want to buy?',
       validate: function(val){
-        if(isNAN(val) == false && parseInt(val) <= results.length && parseInt(val) > 0){
+        if(isNaN(val) == false && parseInt(val) <= results.length && parseInt(val) > 0){
           return true;
         }else{
           return false;
@@ -41,7 +41,7 @@ function openStore(){
       name: 'ItemQuantity',
       message: 'How many do you want to buy?',
       validate: function(val){
-        if(isNAN(val) === false){return true;}else{return false;}
+        if(isNaN(val) === false){return true;}else{return false;}
         }
       }
     ]).then(function(answer){

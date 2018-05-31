@@ -65,7 +65,7 @@ function newDept(){
       name: 'overheadCost',
       message: 'What is the overhead cost of this new department?'
       validate: function(input){
-        if(isNAN(input) === false){return true;}else{return false;}
+        if(isNaN(input) === false){return true;}else{return false;}
       }
     }
   ]).then(function(answer){
