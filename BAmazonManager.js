@@ -55,7 +55,7 @@ function viewProducts(){
 function viewLowInventory() {
   console.log('\n=====Viewing Low Inventory=====\n');
 
-  server.query('SELECT * FROM Products WHERE StockQuantity <= 10', function(error, results){
+  server.query('SELECT * FROM Products WHERE ?', [{StockQuantity <= 5}], function(error, results){
     if(error) throw error;
 
     for(let i=0;  i<results.length; i++){

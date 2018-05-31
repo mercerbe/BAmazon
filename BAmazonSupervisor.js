@@ -2,7 +2,7 @@ const mysql = require('mysql');
 const dotenv = require('dotenv').config();
 const inquirer = require('inquirer');
 const chalk = require('chalk');
-const {table} = require('table');
+const {table,getBorderCharacters} = require('table');
 const server = mysql.createConnection({
   host: "localhost",
   port: 3306,
@@ -76,3 +76,23 @@ function newDept(){
     supervisorMenu();
   })
 }
+
+supervisorMenu();
+
+//table
+function showTable(){
+let config;
+let data;
+
+data = [
+    ['0A', '0B', '0C'],
+    ['1A', '1B', '1C'],
+    ['2A', '2B', '2C']
+];
+
+config = {
+    border: getBorderCharacters(`norc`)
+};
+
+table(data, config);
+};

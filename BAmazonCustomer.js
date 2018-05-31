@@ -12,7 +12,7 @@ const server = mysql.createConnection({
 });
 
 function openStore(){
-  server.query('select * from Products', function(err, results){
+  server.query('SELECT * FROM Products', function(err, results){
     if(err) throw err;
 
     console.log("STORE");
@@ -41,12 +41,8 @@ function openStore(){
       name: 'ItemQuantity',
       message: 'How many do you want to buy?',
       validate: function(val){
-        if(isNAN(val)){
-          return false;
-        }else{
-          return true;
+        if(isNAN(val) === false){return true;}else{return false;}
         }
-      }
       }
     ]).then(function(answer){
       let purchasedItem = (answer.itemID)-1;
@@ -81,17 +77,17 @@ function openStore(){
         console.log("Not enough in stock to complete your purchase");
       }
 
-      reprompt();
+      reOpen();
     });//End inquirer
   });//End server query
 }//End store
 
-function reprompt(){
+function reOpen(){
   inquirer.prompt([
     {
       type: 'confirm',
       name: 'restart',
-      message: 'Whould you like to buy another item?'
+      message: 'Would you like to buy another item?'
     }
   ]).then(function(answer){
     if(answer.restart){
