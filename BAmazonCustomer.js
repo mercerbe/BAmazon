@@ -52,10 +52,11 @@ function openStore(){
       if(results[purchasedItem].StockQuantity >= purchaseQuantity){
         server.query("UPDATE Products SET ? WHERE ?", [
           {StockQuantity: (results[purchasedItem].StockQuantity - purchaseQuantity)},
-          {ItemID: answer.id}
+          {ItemID: answer.ItemID}
         ], function(err, result){
           if(err) throw err;
           console.log("Purchase Complete. Your total is $" + purchaseTotal.toFixed(2) + ".");
+          reOpen();
         });
         server.query("SELECT * FROM Departments", function(err, deptResults){
           if(err) throw err;
@@ -75,8 +76,9 @@ function openStore(){
         })
       }else{
         console.log("Not enough in stock to complete your purchase");
+        reOpen();
       }
-      reOpen();
+
     });//End inquirer
   });//End server query
 }//End store
@@ -87,14 +89,16 @@ function reOpen(){
   inquirer.prompt([
     {
       type: 'confirm',
-      name: 'restart',
-      message: 'Would you like to buy another item?'
+      name: 'reopen',
+      message: 'Would you like to buy another item?',
+      default: true
     }
   ]).then(function(answer){
-    if(answer.restart){
+    if(answer.reopen === true){
       openStore();
     }else{
       console.log("Thanks for shopping with us! Come back soon!");
+      server.end();
     }
   });
 }//End reOpen

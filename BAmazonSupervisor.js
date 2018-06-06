@@ -25,7 +25,8 @@ function supervisorMenu(){
       break;
       case "Create New Department": newDept();
       break;
-      case: "Quit": console.log("Session Ended.");
+      case "Quit": console.log("Session Ended.")
+                    server.end();
     }
   });
 }
@@ -55,7 +56,7 @@ function newDept(){
     {
       type: 'input',
       name: 'deptName',
-      message: 'Name of new Department: '
+      message: 'Name of new Department: ',
       validate: function(input){
         if(input){return true;}else{return false;}
       }
@@ -63,7 +64,7 @@ function newDept(){
     {
       type: 'input',
       name: 'overheadCost',
-      message: 'What is the overhead cost of this new department?'
+      message: 'What is the overhead cost of this new department?',
       validate: function(input){
         if(isNaN(input) === false){return true;}else{return false;}
       }
@@ -72,27 +73,25 @@ function newDept(){
     server.query('INSERT INTO Departments SET ?',[{DepartmentName: answer.deptName, OverheadCosts: answer.overheadCost,}], function(error, response){
       if(error) throw error;
       console.log("New department successfully added.");
+      supervisorMenu();
     });
-    supervisorMenu();
   })
 }
 
 supervisorMenu();
 
 //table
-function showTable(){
-let config;
-let data;
+function showTable(result){
+let config = {
+      border: getBorderCharacters(`norc`)
+  };
+let data = [];
 
-data = [
-    ['0A', '0B', '0C'],
-    ['1A', '1B', '1C'],
-    ['2A', '2B', '2C']
-];
+data.push(Object.keys(result[0]));
+for (product of result) {
+  data.push(Object.values(product));
+}
 
-config = {
-    border: getBorderCharacters(`norc`)
-};
+console.log(table(data,config));
 
-table(data, config);
 };

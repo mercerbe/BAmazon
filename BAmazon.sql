@@ -32,13 +32,13 @@ VALUES
     ("Sports2","SPORTS & OUTDOORS",20.00,100),
     ("Movie","ENTERTAINMENT",15.00,100),
     ("Movie2","ENTERTAINMENT",25.00,100);
-    
+
     select * from Products;
 
 CREATE TABLE Departments(
     DepartmentID INT AUTO_INCREMENT NOT NULL,
     DepartmentName VARCHAR(50) NOT NULL,
-    OverHeadCosts DECIMAL(10,2) NOT NULL,
+    OverheadCosts DECIMAL(10,2) NOT NULL,
     TotalSales DECIMAL(10,2) NOT NULL,
     PRIMARY KEY(DepartmentID)
 );
@@ -52,5 +52,7 @@ VALUES
     ('KIDS', 40000.00, 12000.00),
     ('CLOTHING', 35000.00, 15000.00),
     ('SPORTS & OUTDOORS', 12000.00, 12000.00);
+    
+    
 
 grant all privileges on *.* to 'root'@'localhost'
