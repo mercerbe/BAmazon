@@ -16,7 +16,7 @@ function managerBackend() {
     {
       type: 'list',
       name: 'backend',
-      message: 'What would you like to do?'
+      message: 'What would you like to do?',
       choices: ['View Products for Sale','View Low Inventory', 'Add to Inventory', 'Add New Product', 'Exit']
     }
   ]).then(function(answer){
@@ -30,6 +30,7 @@ function managerBackend() {
       case 'Add New Product': addProduct();
         break;
       case 'Exit': console.log('Session Ended.');
+                    server.end();
     }
   });
 }
@@ -55,12 +56,14 @@ function viewProducts(){
 function viewLowInventory() {
   console.log('\n=====Viewing Low Inventory=====\n');
 
-  server.query('SELECT * FROM Products WHERE ?', [{StockQuantity <= 5}], function(error, results){
+  server.query('SELECT * FROM Products', function(error, results){
     if(error) throw error;
 
     for(let i=0;  i<results.length; i++){
+      if(results[i].StockQuantity <= 5){
       console.log("ID: " + results[i].ItemID + " | " + "Product: " + results[i].ProductName + " | " + "Department: " + results[i].DepartmentName + " | " + "Price: " + results[i].Price + " | " + "Quantity in Stock: " + results[i].StockQuantity);
       console.log("=====================");
+    }
     }
     managerBackend();
   });
@@ -87,9 +90,9 @@ function addToInventory() {
       {
         type: 'input',
         name: 'quantity',
-        message: 'How much needs to be stocked?'
+        message: 'How much needs to be stocked?',
         validate: function(val){
-          if(isNAN(val) === false){return true;}else{return false;}
+          if(isNaN(val) === false){return true;}else{return false;}
         }
       }
     ]).then(function(answer){
@@ -159,9 +162,10 @@ function addProduct() {
     }], function(error, results){
       if(error) throw error;
       console.log("Successfully added new product to the store.");
-    })
-    managerBackend();
-  })
+      managerBackend();
+    });
+    //managerBackend();
+  });
 }
 
 managerBackend();

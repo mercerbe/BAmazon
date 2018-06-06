@@ -15,18 +15,18 @@ function openStore(){
   server.query('SELECT * FROM Products', function(err, results){
     if(err) throw err;
 
-    console.log("STORE");
+    console.log("==========BEN'S BAMAZON================");
     console.log("================================");
 
     for(let i = 0; i<results.length; i++){
-      console.log("Id: " + results[i].ItemID + "|" + "Product: " + results[i].ProductName + "|" + "Department: " + results[i].DepartmentName + "|");
+      console.log("Id: " + results[i].ItemID + " | " + "Product: " + results[i].ProductName + " | " + "Department: " + results[i].DepartmentName + " | ");
       console.log("===============================");
     }
     console.log(' ');
     inquirer.prompt([
       {
       type: 'input',
-      name: 'itemID',
+      name: 'ItemID',
       message: 'What is the Id of the item you want to buy?',
       validate: function(val){
         if(isNaN(val) == false && parseInt(val) <= results.length && parseInt(val) > 0){
@@ -45,17 +45,17 @@ function openStore(){
         }
       }
     ]).then(function(answer){
-      let purchasedItem = (answer.itemID)-1;
-      let purchaseQuantity = parseInt(answer.itemQuantity);
+      let purchasedItem = (answer.ItemID)-1;
+      let purchaseQuantity = parseInt(answer.ItemQuantity);
       let purchaseTotal = parseFloat(((results[purchasedItem].Price)*purchaseQuantity).toFixed(2));
       //check inventory
       if(results[purchasedItem].StockQuantity >= purchaseQuantity){
         server.query("UPDATE Products SET ? WHERE ?", [
           {StockQuantity: (results[purchasedItem].StockQuantity - purchaseQuantity)},
-          {itemID: answer.id}
+          {ItemID: answer.id}
         ], function(err, result){
           if(err) throw err;
-          console.log("Purchase Complete. Your total is $" + purchaseTotal + ".");
+          console.log("Purchase Complete. Your total is $" + purchaseTotal.toFixed(2) + ".");
         });
         server.query("SELECT * FROM Departments", function(err, deptResults){
           if(err) throw err;
@@ -76,12 +76,13 @@ function openStore(){
       }else{
         console.log("Not enough in stock to complete your purchase");
       }
-
       reOpen();
     });//End inquirer
   });//End server query
 }//End store
 
+
+//prompt for another purchase
 function reOpen(){
   inquirer.prompt([
     {
@@ -96,6 +97,6 @@ function reOpen(){
       console.log("Thanks for shopping with us! Come back soon!");
     }
   });
-}//End reprompt
+}//End reOpen
 
 openStore();

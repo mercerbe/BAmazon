@@ -13,11 +13,10 @@ CREATE TABLE Products(
     PRIMARY KEY(ItemID)
 );
 
-select * from Products;
 
 INSERT INTO Products(ProductName,DepartmentName,Price,StockQuantity)
 VALUES
-    ("ComputerPart1","ELECTRONICS",50.00,100),
+    ("ComputerPart1","ELECTRONICS",50.00,1),
     ("ComputerPart2","ELECTRONICS",40.00,100),
     ("Game1","ENTERTAINMENT",30.00,100),
     ("Game2","ENTERTAINMENT",20.00,100),
@@ -32,7 +31,9 @@ VALUES
     ("Sports1","SPORTS & OUTDOORS",20.00,100),
     ("Sports2","SPORTS & OUTDOORS",20.00,100),
     ("Movie","ENTERTAINMENT",15.00,100),
-    ("Movie","ENTERTAINMENT",25.00,100);
+    ("Movie2","ENTERTAINMENT",25.00,100);
+    
+    select * from Products;
 
 CREATE TABLE Departments(
     DepartmentID INT AUTO_INCREMENT NOT NULL,
